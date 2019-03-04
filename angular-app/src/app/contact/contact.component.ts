@@ -12,8 +12,8 @@ export class ContactComponent implements OnInit {
   contact: ContactModel;
   constructor(private contactService: ContactService) {
     this.contact = {
-      email: '',
       name: '',
+      email: '',
       phone: ''
     };
   }

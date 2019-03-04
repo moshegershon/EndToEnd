@@ -1,0 +1,3 @@
+{"email":"m","name":"m","phone":"55"}
+{"email":"moshe@moshe.com","name":"moshe","phone":"0546290202"}
+{"name":"coffee","email":"a@a.com","phone":"5555"}
