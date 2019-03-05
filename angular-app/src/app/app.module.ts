@@ -7,13 +7,21 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RecipesComponent } from './recipes/recipes.component';
+import { AddresipeComponent } from './addresipe/addresipe.component';
+import { RecipeslistComponent } from './recipeslist/recipeslist.component';
+import { RecipesitemComponent } from './recipesitem/recipesitem.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    RecipesComponent,
+    AddresipeComponent,
+    RecipeslistComponent,
+    RecipesitemComponent
   ],
   imports: [
     BrowserModule,
