@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-var mysql = require('mysql');
+const mysql = require('mysql');
 const PORT = 8888;
 const fs = require('fs');
 const rl = require('readline');
@@ -57,10 +57,21 @@ app.post('/Recipes', function (req, res) {
             }
             res.json('ok');
 
-        })
+        });
     });
-
-
 });
+        app.get('/Recipes', function (req, res) {
+            connection.connect(function (err, d) {
+                connection.query('SELECT * FROM `recipes`', function (error, results, fields) {
+                    if (error) {
+                        console.log(error.sql)
+                    }
+                    console.log(results);
+                    res.send(results)
+                });
+            });
 
-app.listen(PORT);
+
+        });
+
+        app.listen(PORT);

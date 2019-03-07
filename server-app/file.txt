@@ -1,3 +1,4 @@
 {"email":"m","name":"m","phone":"55"}
 {"email":"moshe@moshe.com","name":"moshe","phone":"0546290202"}
-{"name":"coffee","email":"a@a.com","phone":"5555"}{"name":"moshee","email":"m@m.com","phone":"0545454545"}
+{"name":"coffee","email":"a@a.com","phone":"5555"}
+{"name":"moshee","email":"m@m.com","phone":"0545454545"}

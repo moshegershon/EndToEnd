@@ -1,5 +1,29 @@
-<p>
-<app-recipesitem></app-recipesitem>
-<app-recipeslist></app-recipeslist>
-<app-addresipe></app-addresipe>
-</p>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" [routerLink]='["List"]'>List
+              </a>
+            </li>
+          </ul>
+          
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" [routerLink]='["Add"]'>Add
+                  </a>
+            </li>
+          </ul>
+
+
+          <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" [routerLink]='["Item"]'>Items
+                  </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+
+      <router-outlet></router-outlet>

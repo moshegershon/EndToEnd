@@ -1,3 +1,9 @@
-<p>
-  recipeslist works!
-</p>
+<div *ngFor='let a of recipe'>
+  <div>
+  {{a.name}}
+</div>
+<div>
+    {{a.instraction}}
+  </div>
+  <hr>
+</div>
