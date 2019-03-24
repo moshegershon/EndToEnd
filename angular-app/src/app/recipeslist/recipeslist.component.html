@@ -1,9 +1,20 @@
+<h1>Our recipes</h1>
+<hr>
+{{ recipe | json }}
 <div *ngFor='let a of recipe'>
+  <ul>
   <div>
-  {{a.name}}
+    <h4> 
+    this recipe is:
+    </h4> 
+    {{a.name}}  
 </div>
 <div>
+    <h4>
+  how to make:
+</h4> 
     {{a.instraction}}
   </div>
   <hr>
+</ul>
 </div>

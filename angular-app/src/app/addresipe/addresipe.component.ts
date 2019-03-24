@@ -19,6 +19,8 @@ export class AddresipeComponent implements OnInit {
   ngOnInit() {
   }
   onClick() {
-  this.recipesService.onClick(this.recipe).subscribe()
+    this.recipesService.onClick(this.recipe).subscribe(() => {
+      console.log('added');
+    });
   }
 }

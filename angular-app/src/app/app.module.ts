@@ -11,7 +11,10 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { AddresipeComponent } from './addresipe/addresipe.component';
 import { RecipeslistComponent } from './recipeslist/recipeslist.component';
 import { RecipesitemComponent } from './recipesitem/recipesitem.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
+
+const config: SocketIoConfig = { url: 'http://localhost:8888', options: {} };
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +30,8 @@ import { RecipesitemComponent } from './recipesitem/recipesitem.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [],
   bootstrap: [AppComponent]

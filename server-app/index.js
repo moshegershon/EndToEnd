@@ -1,10 +1,15 @@
 const express = require('express');
+const app = express();
+const http = require('http').Server(app);
+
+
 const cors = require('cors');
 const mysql = require('mysql');
 const PORT = 8888;
 const fs = require('fs');
+const io = require('socket.io')(http);
 const rl = require('readline');
-const app = express();
+
 
 
 
@@ -45,33 +50,67 @@ app.post('/contact', function (req, res) {
 
 
 app.post('/Recipes', function (req, res) {
-    connection.connect(function (err, d) {
+    //     connection.connect(function (err, d) {
+    //         
+
+    //         }
+    //         console.log(data);
+    //         connection.query('INSERT INTO `recipes` SET ?', data, function (error, results, fields) {
+    //             if (error) {
+    //                 console.log(error.sql)
+    //             }
+    //             res.json('ok');
+
+    //         });
+    //     });
+    // });
+    //         app.get('/Recipes', function (req, res) {
+    //             connection.connect(function (err, d) {
+    //                 connection.query('SELECT * FROM `recipes`', function (error, results, fields) {
+    //                     if (error) {
+    //                         console.log(error.sql)
+    //                     }
+    //                     console.log(results);
+    //                     res.send(results)
+    //                 });
+    //             });
+
+
+});
+
+io.on('connection', function (socket) {
+    socket.on('message', function (msg) {
         let data = {
-            instraction: req.body.insraction,
-            name: req.body.name
+            instraction: msg.insraction,
+            name: msg.name
         }
         console.log(data);
         connection.query('INSERT INTO `recipes` SET ?', data, function (error, results, fields) {
+            console.log(11)
             if (error) {
-                console.log(error.sql)
+                console.log(error);
             }
-            res.json('ok');
-
-        });
-    });
-});
-        app.get('/Recipes', function (req, res) {
-            connection.connect(function (err, d) {
-                connection.query('SELECT * FROM `recipes`', function (error, results, fields) {
-                    if (error) {
-                        console.log(error.sql)
-                    }
-                    console.log(results);
-                    res.send(results)
-                });
+            
+            connection.query('SELECT * FROM `recipes`', function (error, results, fields) {
+                // results = [];
+                if (error) {
+                    console.log(error);
+                };
+                socket.emit('message', results);
+                console.log(results);
+                console.log(11);
             });
 
-
         });
+        socket.emit('message', msg);
+    });
 
-        app.listen(PORT);
+
+
+    // socket.on('disconnect', function () {
+    //     console.log('user disconnected');
+    // });
+});
+http.listen(PORT, function() {
+    console.log('connected')
+});
