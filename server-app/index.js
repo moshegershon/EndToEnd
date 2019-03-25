@@ -1,8 +1,6 @@
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);
-
-
 const cors = require('cors');
 const mysql = require('mysql');
 const PORT = 8888;
@@ -90,27 +88,40 @@ io.on('connection', function (socket) {
             if (error) {
                 console.log(error);
             }
-            
-            connection.query('SELECT * FROM `recipes`', function (error, results, fields) {
-                // results = [];
-                if (error) {
-                    console.log(error);
-                };
-                socket.emit('message', results);
-                console.log(results);
-                console.log(11);
-            });
+
+            // connection.query('SELECT * FROM `recipes`', function (error, results, fields) {
+            //     // results = [];
+            //     if (error) {
+            //         console.log(error);
+            //     };
+            //     socket.emit('message', results);
+            //     console.log(results);
+            //     console.log(11);
+            // });
 
         });
-        socket.emit('message', msg);
+        socket.emit('message', [msg]);
+
+
     });
 
 
+    socket.on('notify', function () {
+        connection.query('SELECT * FROM `recipes`', function (error, results, fields) {
+            // results = [];
+            if (error) {
+                console.log(error);
+            };
+            socket.emit('message', results);
+            console.log(results);
+            console.log(11);
+        });
 
+    });
     // socket.on('disconnect', function () {
     //     console.log('user disconnected');
     // });
 });
-http.listen(PORT, function() {
+http.listen(PORT, function () {
     console.log('connected')
 });

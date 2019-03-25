@@ -13,10 +13,14 @@ export class RecipesService {
   constructor(private httpClient: HttpClient, private socket:Socket) { }
 
   Getrecipes(): Observable <Recipesmodel[]>{
-    return this.socket.fromEvent('message'); 
+    return this.socket.fromEvent('message');
+    debugger; 
      // return this.httpClient.get<Recipesmodel[]>('http://localhost:8888/Recipes');
    }
 
+   notify() {
+    return this.socket.emit('notify');
+   }
   onClick(r: Recipesmodel): Observable<string> {
     return of('ok').pipe(map(()=>{
       console.log('added');

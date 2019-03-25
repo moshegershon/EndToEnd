@@ -16,11 +16,13 @@ export class RecipeslistComponent implements OnInit {
 
 
   ngOnInit() {
+    debugger; 
     this.recipesService.Getrecipes().subscribe(res => {
       debugger;
       console.log(res);
       this.recipe = res; 
     })
+    this.recipesService.notify()
   }
 
 }
